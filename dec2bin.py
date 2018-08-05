@@ -1,12 +1,13 @@
 from Stack import *
-def divideBy2(decnumber):
+def divideBybase(decnumber,base):
+	digits="0123456789ABCDEF"
 	remstack=Stack()
 	while decnumber>0:
-		rem =decnumber%2
+		rem =decnumber%base
 		remstack.push(rem)
-		decnumber=decnumber//2
+		decnumber=decnumber//base
 	binstring=""
 	while not remstack.isEmpty():
-		binstring=binstring+str(remstack.pop())
+		binstring=binstring+digits[remstack.pop()]
 	return binstring
-print(divideBy2(6))
+print(divideBybase(13,16))
