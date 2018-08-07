@@ -54,14 +54,27 @@ class UnsortedList:
 			current=current.getNext()
 		temp=Node(item)
 		current.setNext(temp)
-
+	#有点问题
 	def insert(self,item,position):
-		pass
+		count=0
+		current=self.head
+		previous=None
+		while current!=None and not(count ==position):
+			count+=1
+			previous=current
+			current=current.getNext()
+		temp=Node(item)
+		if previous==None:
+			temp.setNext(self.head)
+			self.head=temp
+		else:
+			temp.setNext(current)
+			previous.setNext(temp)
 	#returns the position of item in the list. It needs the item and returns the index.Assume the item is in the list.
 	def index(self,item):
 		count=0
 		found =False
-		current=self.head
+		current=self.head #引用别名
 		while current!=None and not found:
 			if current.getData()==item:
 				found =True
@@ -76,5 +89,5 @@ mylist=UnsortedList()
 mylist.add(31)
 mylist.add(77)
 mylist.add(17)
-mylist.append(26)
+mylist.insert(26,0)
 print( mylist.index(26))
